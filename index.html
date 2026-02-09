@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
@@ -51,7 +51,7 @@
                               <td align="left"><span id="ctl00_cntphmaster_lbl_StudCode">كود الطالب</span>
                             </td>
                             <td align="right">
-                              <input name="ctl00$cntphmaster$txt_StudCode" type="text" onchange="javascript:setTimeout('__doPostBack(\'ctl00$cntphmaster$txt_StudCode\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="ctl00_cntphmaster_txt_StudCode" class="form-text"><span id="ctl00_cntphmaster_RequiredFieldValidator1">إجبارى</span>
+                              <input name="ctl00$cntphmaster$txt_StudCode" type="text" onchange="javascript:setTimeout('__doPostBack(\'ctl00$cntphmaster$txt_StudCode\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="ctl00_cntphmaster_txt_StudCode" class="form-text"><span id="ctl00_cntphmaster_RequiredFieldValidator1"></span>
                           </td>
                         </tr>
                         <tr>
@@ -63,7 +63,7 @@
                           <td align="left"><span id="ctl00_cntphmaster_lbl_Nationalnum">كلمة السر</span>
                         </td>
                         <td align="right">
-                          <input name="ctl00$cntphmaster$txt_Nationalnum" type="text" value="الرقم القومى - الرقم التعريفى - الرقم السرى" id="ctl00_cntphmaster_txt_Nationalnum" onfocus="__doPostBack('ctl00$cntphmaster$btnTextBoxEventHandler','')"><span id="ctl00_cntphmaster_RequiredFieldValidator2">إجبارى</span>
+                          <input name="ctl00$cntphmaster$txt_Nationalnum" type="text" placeholder="الرقم القومى - الرقم التعريفى - الرقم السرى" id="ctl00_cntphmaster_txt_Nationalnum" onfocus="this.placeholder=''; this.value=''; __doPostBack('ctl00$cntphmaster$btnTextBoxEventHandler','')"><span id="ctl00_cntphmaster_RequiredFieldValidator2"></span>
                         <div>
                           <input type="submit" name="ctl00$cntphmaster$btnTextBoxEventHandler" value="" id="ctl00_cntphmaster_btnTextBoxEventHandler">
                         </div>
@@ -88,20 +88,20 @@
                               <tr>
                                 <td>
                                   <input type="submit" name="ctl00$cntphmaster$GetMail" value="الحصول على البريد الجامعي" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cntphmaster$GetMail&quot;, &quot;&quot;, true, &quot;enter&quot;, &quot;&quot;, false, false))" id="ctl00_cntphmaster_GetMail" class="btn btn-primary btn-block">
-                                  <input type="submit" name="ctl00$cntphmaster$btn_Login3" value="البيانات المالية للطالب" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cntphmaster$btn_Login3&quot;, &quot;&quot;, true, &quot;enter&quot;, &quot;&quot;, false, false))" id="ctl00_cntphmaster_btn_Login3" title=" - تم نقل السجل المالى للطالب الى نظام وحدة نظم المعلومات المالية بالجامعة" class="btn btn-primary btn-block">
+                                  <input type="submit" name="ctl00$cntphmaster$btn_Login3" value="البيانات المالية للطالب" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cntphmaster$btn_Login3&quot;, &quot;&quot;, true, &quot;enter&quot;, &quot;&quot;, false, false))" id="ctl00_cntphmaster_btn_Login3" title=" - ØªÙ… Ù†Ù‚Ù„ Ø§Ù„Ø³Ø¬Ù„ Ø§Ù„Ù…Ø§Ù„Ù‰ Ù„Ù„Ø·Ø§Ù„Ø¨ Ø§Ù„Ù‰ Ù†Ø¸Ø§Ù… ÙˆØ­Ø¯Ø© Ù†Ø¸Ù… Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© Ø¨Ø§Ù„Ø¬Ø§Ù…Ø¹Ø©" class="btn btn-primary btn-block">
                                   <input type="submit" name="ctl00$cntphmaster$btn_Login1" value="البيانات والسجل الأكاديمي" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cntphmaster$btn_Login1&quot;, &quot;&quot;, true, &quot;enter&quot;, &quot;&quot;, false, false))" id="ctl00_cntphmaster_btn_Login1" class="btn btn-primary btn-block">
-<button type="button" id="course-result-forward" class="btn btn-primary btn-block" onclick="handleCourseResultRedirect()">????? ?????? ????? ???????</button>
+                                  <button type="button" class="btn btn-primary btn-block" onclick="handleCourseResultRedirect()">نتيجة المقررات</button>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
-                                  <button type="button" class="btn btn-primary btn-block" onclick="window.location.href='courses-result.html'">Ù†ØªÙŠØ¬Ø© Ø§Ù„Ù…Ù‚Ø±Ø±Ø§Øª</button>
+                                  
                                 </td>
                               </tr>
                               <tr align="center">
-                                <td><a id="ctl00_cntphmaster_LinkButton1" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cntphmaster$LinkButton1&quot;, &quot;&quot;, false, &quot;&quot;, &quot;../UI/ED_STUD/test.aspx&quot;, false, true))">للحصول على رقم الجلوس</a>
-                                <br><a id="ctl00_cntphmaster_btnview1" href="javascript:__doPostBack('ctl00$cntphmaster$btnview1','')">لتسجيل بيانات الطالب</a>
-                              <br><a id="ctl00_cntphmaster_btnview2" href="javascript:__doPostBack('ctl00$cntphmaster$btnview2','')">لتسجيل المقررات للطالب</a>
+                                <td><a id="ctl00_cntphmaster_LinkButton1" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cntphmaster$LinkButton1&quot;, &quot;&quot;, false, &quot;&quot;, &quot;../UI/ED_STUD/test.aspx&quot;, false, true))">Ù„Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø±Ù‚Ù… Ø§Ù„Ø¬Ù„ÙˆØ³</a>
+                                <br><a id="ctl00_cntphmaster_btnview1" href="javascript:__doPostBack('ctl00$cntphmaster$btnview1','')">لتسجيل بيانات الطالب¨</a>
+                              <br><a id="ctl00_cntphmaster_btnview2" href="javascript:__doPostBack('ctl00$cntphmaster$btnview2','')">لتسجيل المقررات للطالب¨</a>
                           </td>
                         </tr>
                         <tr align="center">
@@ -163,6 +163,8 @@ function handleCourseResultRedirect() {
 </script>
 </body>
 </html>
+
+
 
 
 
