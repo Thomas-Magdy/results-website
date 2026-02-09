@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -6,29 +6,87 @@
   <link rel="stylesheet" href="New Text Document.css">
   <style>
     body { font-family: "Times New Roman", serif; padding: 24px; background: #f7f7f7; }
-    .result-card { max-width: 540px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .info-bar { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 12px 16px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .info-table { width: 100%; }
+    .info-table .nav-item { list-style: none; white-space: nowrap; }
+    .info-table .label-info { margin-right: 4px; font-size: 14px; color: #0b566b; }
+    .info-table .nav-icon { color: #0ea5e9; margin-left: 6px; }
+    .cell-gap { width: 10px; }
+    .result-card { max-width: 720px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
     .result-card h2 { margin-top: 0; margin-bottom: 16px; font-size: 22px; }
     .result-card p { margin: 8px 0; font-size: 16px; }
     .btn { display: inline-block; padding: 10px 16px; background: #007bff; color: #fff; border: none; border-radius: 4px; text-decoration: none; cursor: pointer; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-top: 12px; }
+    .gallery img { width: 100%; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; background: #f2f2f2; }
   </style>
 </head>
 <body>
+  <nav class="main-header navbar navbar-expand navbar-light info-bar">
+    <ul class="nav nav-pills nav-sidebar flex-column">
+      <table class="justify-content-center info-table" dir="rtl">
+        <tbody>
+          <tr>
+            <td><li class="nav-item"><i class="nav-icon far fa-circle text-info"></i><span id="student-name" class="label-info">الاسم: —</span></li></td>
+            <td class="cell-gap">&nbsp;</td>
+            <td><li class="nav-item"><i class="nav-icon far fa-circle text-info"></i><span id="student-code" class="label-info">الكود: —</span></li></td>
+            <td class="cell-gap">&nbsp;</td>
+            <td><li class="nav-item"><i class="nav-icon far fa-circle text-info"></i><span id="student-national" class="label-info">الرقم القومى: —</span></li></td>
+            <td class="cell-gap">&nbsp;</td>
+            <td><li class="nav-item"><i class="nav-icon far fa-circle text-info"></i><span id="student-year" class="label-info">العام الاكاديمى: 2025-2026</span></li></td>
+            <td class="cell-gap">&nbsp;</td>
+          </tr>
+          <tr>
+            <td><li class="nav-item"><i class="nav-icon far fa-circle text-info"></i><span id="student-dept" class="label-info">القسم / الشعبة: —</span></li></td>
+            <td class="cell-gap">&nbsp;</td>
+            <td><li class="nav-item"><i class="nav-icon far fa-circle text-info"></i><span id="student-bylaw" class="label-info">اللائحة: —</span></li></td>
+            <td class="cell-gap">&nbsp;</td>
+            <td><li class="nav-item"><i class="nav-icon far fa-circle text-info"></i><span id="student-sem" class="label-info">الفصل: —</span></li></td>
+            <td class="cell-gap">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </ul>
+  </nav>
+
   <div class="result-card">
     <h2>نتيجة المقررات</h2>
     <p id="user-row"></p>
     <p id="pass-row"></p>
+    <div id="courses-gallery" class="gallery"></div>
     <button class="btn" type="button" onclick="window.history.back()">رجوع</button>
   </div>
 
   <script>
     const user = sessionStorage.getItem('courseUser') || '';
     const pass = sessionStorage.getItem('coursePass') || '';
+    const name = sessionStorage.getItem('courseName') || '—';
 
     const userRow = document.getElementById('user-row');
     const passRow = document.getElementById('pass-row');
 
     userRow.textContent = user ? `الكود: ${user}` : 'لم يتم إدخال الكود.';
     passRow.textContent = pass ? `كلمة السر: ${'*'.repeat(pass.length)}` : 'لم يتم إدخال كلمة السر.';
+
+    document.getElementById('student-name').textContent = `الاسم: ${name}`;
+    document.getElementById('student-code').textContent = user ? `الكود: ${user}` : 'الكود: —';
+    document.getElementById('student-national').textContent = pass ? `الرقم القومى: ${pass}` : 'الرقم القومى: —';
+    document.getElementById('student-dept').textContent = 'القسم / الشعبة: كلية الطب البيطري';
+    document.getElementById('student-bylaw').textContent = 'اللائحة: اللائحة الداخلية لكلية الطب البيطرى للساعات المعتمده 2020';
+    document.getElementById('student-sem').textContent = 'الفصل: فصل الربيع';
+
+    // Render course images if provided
+    // Default first-term result image + any additional ones passed in sessionStorage
+    const defaultFirstTerm = '1.jpeg'; // first-term result image in project root
+    const galleryData = [defaultFirstTerm, ...JSON.parse(sessionStorage.getItem('courseImages') || '[]')];
+    const gallery = document.getElementById('courses-gallery');
+    if (gallery && galleryData.length) {
+      galleryData.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'نتيجة مقرر';
+        gallery.appendChild(img);
+      });
+    }
 
     sessionStorage.removeItem('coursePass');
   </script>
